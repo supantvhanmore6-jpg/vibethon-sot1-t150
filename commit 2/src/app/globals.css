@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 231 55% 9%;
+    --foreground: 0 0% 100%;
+    --card: 231 55% 12%;
+    --card-foreground: 0 0% 100%;
+    --popover: 231 55% 10%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 189 87% 54%;
+    --primary-foreground: 231 55% 9%;
+    --secondary: 263 80% 58%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 231 30% 20%;
+    --muted-foreground: 231 20% 70%;
+    --accent: 263 80% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 231 40% 25%;
+    --input: 231 40% 20%;
+    --ring: 189 87% 54%;
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body overflow-x-hidden selection:bg-primary/30;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl;
+  }
+  
+  .neon-glow-primary {
+    @apply shadow-[0_0_15px_rgba(34,211,238,0.5)];
+  }
+  
+  .neon-glow-secondary {
+    @apply shadow-[0_0_15px_rgba(124,58,237,0.5)];
+  }
+  
+  .btn-neon {
+    @apply relative overflow-hidden transition-all duration-300 active:scale-95;
+  }
+  
+  .btn-neon-primary {
+    @apply bg-primary text-primary-foreground neon-glow-primary hover:shadow-[0_0_25px_rgba(34,211,238,0.8)];
+  }
+  
+  .btn-neon-secondary {
+    @apply bg-secondary text-secondary-foreground neon-glow-secondary hover:shadow-[0_0_25px_rgba(124,58,237,0.8)];
+  }
+
+  .animated-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_auto] animate-gradient-x;
+  }
+}
+
+@keyframes gradient-x {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 5s linear infinite;
+}
+
+.particle {
+  @apply absolute pointer-events-none opacity-20;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+}
